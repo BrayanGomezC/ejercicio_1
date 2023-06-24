@@ -4,15 +4,15 @@ jobs:
   build:
     working_directory: ~/circleci-python
     docker:
-      - image: "circleci/python:3.11.4"
+      - image: "circleci/python:3.8.6"
     steps:
       - checkout
-      - run: python3 ejercicio_1.py
+      - run: python3 main.py
 
   test:
     working_directory: ~/circleci-python
     docker:
-      - image: "circleci/python:3.11.4"
+      - image: "circleci/python:3.8.6"
     steps:
       - checkout
       - run:
@@ -22,10 +22,11 @@ jobs:
             python3 -m pip install pytest
       - run: python3 -m pytest
 
-  workflows:
-    build_and_test:
-      jobs:
-        - build
-        - test:
-            requires:
-              - build
+
+workflows:
+  build_and_test:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
