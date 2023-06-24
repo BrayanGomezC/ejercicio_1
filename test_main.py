@@ -4,9 +4,10 @@ from ejercicio1 import sum, es_mayor_que, login
 def test_sum():
     assert sum(3,8)==11
     assert sum(11,2)==33
+    assert sum(5,14)==18
     
 def test_es_mayor_que():
-    assert es_mayor_que(10,11)
+    assert es_mayor_que(30,11)
 
 @pytest.mark.parametrize(
     "in_x,in_y,esperado",
